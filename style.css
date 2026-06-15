@@ -370,13 +370,44 @@ body {
     color: var(--muted);
 }
 
+
+
 /* ================= SKILLS ================= */
+.skills-section {
+    padding: 120px 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, var(--black), #000000);
+}
+
+.skills-book {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 18px;
+    background: linear-gradient(120deg, var(--black) 50%, #030b2d 50%);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+    transform-style: preserve-3d;
+}
+
+.skills-title {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    color: var(--text);
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
 
 .skill-card {
     background: rgba(255,255,255,0.02);
     border: 1px solid rgba(59,130,246,0.2);
     border-radius: 14px;
-    padding: 30px;
+    padding: 20px 24px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -386,28 +417,33 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
-.skill-card h3 {
+.skill-card h5 {
     color: var(--soft-blue);
-    font-size: 28px;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
-.skill-card p {
+.skill-bar {
+    width: 100%;
+    height: 16px;
+    background: rgba(59,130,246,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    width: var(--skill);
+    height: 100%;
+    background: var(--soft-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     color: var(--text);
-    margin: 0;
-    line-height: 1.8;
-    font-size: 16px;
-}
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
+    font-size: 12px;
+    font-weight: 700;
+    padding-right: 6px;
+    transition: width 1.5s ease;
 }
 .projects-section {
   padding: 120px 0;
