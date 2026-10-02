@@ -1,0 +1,141 @@
+/* ================= ROOT VARIABLES ================= */
+:root {
+    --soft-blue: #3b82f6;
+    --muted: #9ca3af;
+    --text: #e5e7eb;
+    --black: #020617;
+}
+
+/* ================= BASE ================= */
+body {
+    background: radial-gradient(circle at top, var(--black), #000000);
+    color: var(--text);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+/* ================= SECTION SPACING ================= */
+.about-section {
+    padding-top: 80px;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================= BOOK PAGE ================= */
+.about-book {
+    width: 100%;
+    max-width: 900px;
+    background: linear-gradient(120deg, var(--black) 50%, #030b2d 50%);
+    border-radius: 18px;
+    padding: 40px;
+    margin: 40px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    animation: bookFade 1s ease forwards;
+}
+
+@keyframes bookFade {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= HEADINGS ================= */
+.about-title {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.about-title span {
+    color: var(--soft-blue);
+}
+
+/* ================= TEXT ================= */
+.about-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.about-text strong {
+    color: var(--soft-blue);
+}
+
+/* ================= INFO GRID ================= */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 14px;
+    padding: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(59,130,246,0.25);
+}
+
+.about-card h5 {
+    font-size: 18px;
+    margin-bottom: 14px;
+    color: var(--soft-blue);
+    letter-spacing: 1px;
+}
+
+.about-card ul {
+    padding-left: 18px;
+}
+
+.about-card li {
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+/* ================= BUTTON ================= */
+.about-btn {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(59,130,246,0.4);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .about-book {
+        padding: 24px;
+    }
+
+    .about-title {
+        font-size: 28px;
+    }
+
+    .about-text {
+        font-size: 15px;
+    }
+}
