@@ -2,7 +2,7 @@
    ANISH FATHIMA PORTFOLIO
    FULL RESPONSIVE PREMIUM CSS
    Mobile | Tablet | Laptop | Desktop
-   PREMIUM ANIMATIONS EDITION
+   SMOOTH SCROLL ANIMATIONS EDITION
 ========================================================= */
 
 
@@ -1804,109 +1804,36 @@ a {
 
 
 /* =========================================================
-   9. VIEWPORT REVEAL + 1 SECOND BOUNCE
+   9. SMOOTH VIEWPORT REVEAL — BOTTOM TO TOP
 ========================================================= */
 
-/*
-   IMPORTANT:
-
-   Existing JavaScript uses:
-
+/* Keep the existing JavaScript classes compatible:
    .reveal -> .visible
-
-   and:
-
    .bounce-target -> .bounce-active
-
-   Both are supported here.
 */
 
 .reveal,
 .bounce-target {
   opacity: 0;
-
-  transform:
-    translate3d(0, 38px, 0)
-    scale(0.96);
-
-  will-change:
-    transform,
-    opacity;
+  transform: translateY(24px);
+  will-change: opacity, transform;
 }
 
-
-/* REVEAL */
-
-.reveal.visible {
-  animation:
-    viewportBounce
-    1s
-    var(--bounce)
-    both;
-}
-
-
-/* BOUNCE TARGET */
-
+/* Reveal smoothly when an element enters the viewport */
+.reveal.visible,
 .bounce-target.bounce-active {
-  animation:
-    viewportBounce
-    1s
-    var(--bounce)
-    both;
+  animation: smoothReveal 0.7s ease-out both;
 }
 
-
-@keyframes viewportBounce {
-
-  0% {
+@keyframes smoothReveal {
+  from {
     opacity: 0;
-
-    transform:
-      translate3d(0, 42px, 0)
-      scale(0.94);
+    transform: translateY(24px);
   }
 
-  20% {
-    opacity: 0.55;
-
-    transform:
-      translate3d(0, 18px, 0)
-      scale(0.97);
-  }
-
-  38% {
+  to {
     opacity: 1;
-
-    transform:
-      translate3d(0, -12px, 0)
-      scale(1.018);
-  }
-
-  55% {
-    transform:
-      translate3d(0, 7px, 0)
-      scale(0.995);
-  }
-
-  70% {
-    transform:
-      translate3d(0, -4px, 0)
-      scale(1.006);
-  }
-
-  84% {
-    transform:
-      translate3d(0, 2px, 0)
-      scale(0.998);
-  }
-
-  100% {
-    opacity: 1;
-
-    transform:
-      translate3d(0, 0, 0)
-      scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -4745,7 +4672,7 @@ section::before {
 
   .reveal.visible,
   .bounce-target.bounce-active {
-    animation-duration: 0.95s;
+    animation-duration: 0.7s;
   }
 
   .floating-code-card {
@@ -4761,3 +4688,76 @@ section::before {
 /* =========================================================
    END OF PREMIUM PORTFOLIO CSS
 ========================================================= */
+
+/* =========================================================
+   35. CARD RISE ON SCROLL — BOTTOM TO TOP
+   Cards rise gently when their section enters the viewport.
+   No bounce, no zoom, and no layout/design changes.
+========================================================= */
+
+.reveal.visible .skill-card,
+.reveal.visible .project-card,
+.reveal.visible .certificate-card,
+.reveal.visible .contact-card,
+.reveal.visible .glass-card,
+.reveal.visible .highlight-item,
+.reveal.visible .edu-content,
+.reveal.visible .about-side-card {
+  animation: cardRiseOnScroll 0.65s ease-out both;
+}
+
+/* Slight stagger so cards rise one after another */
+.reveal.visible .skill-card:nth-child(1),
+.reveal.visible .project-card:nth-child(1),
+.reveal.visible .certificate-card:nth-child(1),
+.reveal.visible .contact-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.reveal.visible .skill-card:nth-child(2),
+.reveal.visible .project-card:nth-child(2),
+.reveal.visible .certificate-card:nth-child(2),
+.reveal.visible .contact-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.reveal.visible .skill-card:nth-child(3),
+.reveal.visible .project-card:nth-child(3),
+.reveal.visible .certificate-card:nth-child(3),
+.reveal.visible .contact-card:nth-child(3) {
+  animation-delay: 0.19s;
+}
+
+.reveal.visible .skill-card:nth-child(4),
+.reveal.visible .project-card:nth-child(4),
+.reveal.visible .certificate-card:nth-child(4),
+.reveal.visible .contact-card:nth-child(4) {
+  animation-delay: 0.26s;
+}
+
+@keyframes cardRiseOnScroll {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal.visible .skill-card,
+  .reveal.visible .project-card,
+  .reveal.visible .certificate-card,
+  .reveal.visible .contact-card,
+  .reveal.visible .glass-card,
+  .reveal.visible .highlight-item,
+  .reveal.visible .edu-content,
+  .reveal.visible .about-side-card {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
